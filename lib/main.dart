@@ -9,22 +9,45 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Sylheti dictionary',
-      home: Scaffold(
-        appBar: AppBar(
-          title: SearchToggle(),
-        ),
-        body: Column(
-          children: <Widget>[
-            SearchBar(),
-            Expanded(
-                child: SearchResults()
-            )
-          ]
-        )
-      ),
+      home: SylhetiDictionary(),
     );
   }
 }
+
+class SylhetiDictionary extends StatefulWidget {
+  @override
+  _SylhetiDictionaryState createState() => _SylhetiDictionaryState();
+}
+
+class _SylhetiDictionaryState extends State<SylhetiDictionary> {
+  bool isEnglish = true;
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: SearchToggle(
+          isEnglish: isEnglish,
+          toggleSearch: () {
+            setState(() {
+              isEnglish = !isEnglish;
+            });
+          }
+        ),
+      ),
+      body: Column(
+        children: <Widget>[
+          SearchBar(),
+          Expanded(
+            child: SearchResults()
+          )
+        ]
+      )
+    );
+  }
+}
+
 
 class SearchBar extends StatefulWidget {
   @override
@@ -74,23 +97,17 @@ class _SearchResultsState extends State<SearchResults> {
   }
 }
 
-class SearchToggle extends StatefulWidget {
-  @override
-  _SearchToggleState createState() => _SearchToggleState();
-}
+class SearchToggle extends StatelessWidget {
+  final bool isEnglish;
+  final VoidCallback toggleSearch;
 
-class _SearchToggleState extends State<SearchToggle> {
-  String _title = "English → Sylheti";
+  SearchToggle({@required this.isEnglish, this.toggleSearch});
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      child: Text(_title, style: TextStyle(fontSize: 20.0, color: Colors.white)),
-      onPressed: (() {
-        String newValue = _title == "English → Sylheti" ? "Sylheti → English" : "English → Sylheti";
-        setState(() {_title = newValue;});
-      }),
+      child: Text(isEnglish ? "English → Sylheti" : "Sylheti → English", style: TextStyle(fontSize: 20.0, color: Colors.white)),
+      onPressed: () => toggleSearch(),
     );
   }
 }
-
