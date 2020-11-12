@@ -67,17 +67,14 @@ class _SearchBarState extends State<SearchBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 5.0),
-      child: Form(
-        key: _searchKey,
-        child: TextFormField(
-          controller: _searchController,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(),
-            hintText: 'Search',
-          ),
-        )
+    return Form(
+      key: _searchKey,
+      child: TextFormField(
+        controller: _searchController,
+        decoration: InputDecoration(
+          border: OutlineInputBorder(),
+          hintText: 'Search',
+        ),
       )
     );
   }
