@@ -33,11 +33,18 @@ dependencies:
 
   html: ^0.13.3+3
   http: ^0.12.0
+  moor:
+  sqlite3_flutter_libs:
+  path_provider:
+  path:
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_launcher_icons: "^0.8.0"
+  moor_generator:
+  build_runner:
 
 flutter_icons:
   android: "launcher_icon"
