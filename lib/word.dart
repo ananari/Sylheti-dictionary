@@ -17,7 +17,7 @@ class Word {
       // inflecting normal verbs
       if(this.ipaLexeme.endsWith("a")) {
         // checking if stem is of the form consonant-vowel-consonant
-        RegExp cvc = new RegExp(r"[kxgŋszʈɖtdnpfɸbmrlʃhɽ][aiueoɔáíúéóɔ́][kxgŋszʈɖtdnpfɸbmrlʃhɽ]\b");
+        RegExp cvc = new RegExp(r"t?[kxgŋszʈɖtdnpfɸbmrlʃhɽ][aiueoɔáíúéóɔ́][kxgŋszʈɖtdnpfɸbmrlʃhɽ]\b");
         if(cvc.firstMatch(this.ipaLexeme.substring(0, this.ipaLexeme.length - 1)) != null) {
           stem = this.ipaLexeme.substring(0, this.ipaLexeme.length - 1);
           // impersonal forms
