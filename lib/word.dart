@@ -1,5 +1,6 @@
 class Word {
-  String ipaLexeme, pos;
+  String ipaLexeme, pos, etymology;
+  int id;
 
   Word({String ipaLexeme, String pos}){
     this.ipaLexeme = ipaLexeme;
