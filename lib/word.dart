@@ -1,13 +1,8 @@
 class Word {
-  String ipaLexeme, pos, etymology;
+  String ipaLexeme, pos, etymology, definition;
   int id;
 
-  Word({String ipaLexeme, String pos, String etymology, int id}){
-    this.ipaLexeme = ipaLexeme;
-    this.pos = pos;
-    this.etymology = etymology;
-    this.id = id;
-  }
+  Word({String ipaLexeme, String pos, String etymology, String definition, int id});
 
   Map inflect() {
     String stem;
