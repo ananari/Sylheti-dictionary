@@ -1,8 +1,8 @@
 class Word {
-  String ipaLexeme, pos, etymology, definition;
+  String ipaLexeme, pos, etymology, definition, flexId;
   int id;
 
-  Word({String ipaLexeme, String pos, String etymology, String definition, int id});
+  Word({String ipaLexeme, String pos, String etymology, String definition, String flexId, int id});
 
   Map inflect() {
     String stem;
