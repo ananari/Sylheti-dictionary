@@ -4,6 +4,11 @@ class Word {
 
   Word({String ipaLexeme, String pos, String etymology, String definition, String flexId, String bengEq, int id});
 
+  String toString() {
+    String str = "ipaLexeme: $ipaLexeme, pos: $pos, etymology: $etymology, definition: $definition, flexId: $flexId, bengEq: $bengEq. id: $id\n";
+    return str;
+  }
+
   Map inflect() {
     String stem;
 
@@ -15,7 +20,7 @@ class Word {
       // inflecting normal verbs
       if(this.ipaLexeme.endsWith("a")) {
         // checking if stem is of the form consonant-vowel-consonant
-        RegExp cvc = new RegExp(r"t?[kxgŋszʈɖtdnpfɸbmrlʃhɽ][aiueoɔáíúéóɔ́][kxgŋszʈɖtdnpfɸbmrlʃhɽ]\b");
+        RegExp cvc = new RegExp(r"t?[kxgŋszʈɖtdnpfɸbmrlʃhɽ][aiueoɔáíúéó́][kxgŋszʈɖtdnpfɸbmrlʃhɽ]\b");
         if(cvc.firstMatch(this.ipaLexeme.substring(0, this.ipaLexeme.length - 1)) != null) {
           stem = this.ipaLexeme.substring(0, this.ipaLexeme.length - 1);
           // impersonal forms
