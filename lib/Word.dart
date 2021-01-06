@@ -1,11 +1,13 @@
+import './Variant.dart';
+
 class Word {
-  String ipaLexeme, pos, etymology, definition, flexId, bengEq;
+  String ipaLexeme, pos, etymology, definition, flexId, bengEq, semDomain;
   int id;
 
-  Word({String ipaLexeme, String pos, String etymology, String definition, String flexId, String bengEq, int id});
+  Word({this.ipaLexeme, this.pos, this.etymology, this.definition, this.flexId, this.bengEq, this.semDomain, this.id});
 
   String toString() {
-    String str = "ipaLexeme: $ipaLexeme, pos: $pos, etymology: $etymology, definition: $definition, flexId: $flexId, bengEq: $bengEq. id: $id\n";
+    String str = "ipaLexeme: $ipaLexeme, pos: $pos, etymology: $etymology, definition: $definition, flexId: $flexId, bengEq: $bengEq. semDomain: $semDomain, id: $id\n";
     return str;
   }
 
@@ -73,5 +75,13 @@ class Word {
       };
     }
     return {"error": "no inflection defined"};
+  }
+
+  Variant makeVariant({String flexId, String relation = "unspecified", String ipaLexeme}){
+    ipaLexeme ??= this.ipaLexeme;
+    Variant newVariant = new Variant(ipaLexeme: ipaLexeme, pos: this.pos, etymology: this.etymology, definition: this.definition,
+        relation: relation, wordId: this.flexId, flexId: flexId, semDomain: this.semDomain);
+    return newVariant;
+
   }
 }
