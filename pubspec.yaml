@@ -37,6 +37,8 @@ dependencies:
   sqlite3_flutter_libs:
   path_provider:
   path:
+  flutter_bloc:
+  graphql_flutter:
 
 
 dev_dependencies:
