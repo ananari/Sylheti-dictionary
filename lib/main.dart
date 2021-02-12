@@ -2,15 +2,33 @@ import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 void main() {
+
+
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   @override
+
+
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Sylheti dictionary',
-      home: SylhetiDictionary(),
+
+    final HttpLink httpLink = HttpLink("https://sylheti-backend.gigalixirapp.com/api/graphiql");
+    final Link link = httpLink;
+    ValueNotifier<GraphQLClient> client = ValueNotifier(
+      GraphQLClient(
+        link: link,
+        cache: GraphQLCache(),
+        // The default store is the InMemoryStore, which does NOT persist to disk
+      ),
+    );
+
+    return GraphQLProvider(
+      client: client,
+      child: MaterialApp(
+        title: 'Sylheti dictionary',
+        home: SylhetiDictionary(),
+      )
     );
   }
 }
@@ -21,7 +39,7 @@ class SylhetiDictionary extends StatefulWidget {
 }
 
 class _SylhetiDictionaryState extends State<SylhetiDictionary> {
-  bool isEnglish = true;
+  bool isEnglish = false;
 
 
   @override
