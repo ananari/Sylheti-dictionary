@@ -30,6 +30,9 @@ class _SearchBarState extends State<SearchBar> {
             border: OutlineInputBorder(),
             hintText: 'Search',
           ),
+          onEditingComplete: (){
+            widget.setTerm(_searchController.text);
+          }
         )
     );
   }

@@ -3,6 +3,10 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 
 class SearchResults extends StatefulWidget {
 
+  final String searchTerm;
+
+  SearchResults({@required this.searchTerm});
+
   @override
   _SearchResultsState createState() => _SearchResultsState();
 }
@@ -32,9 +36,8 @@ class _SearchResultsState extends State<SearchResults> {
           }
 
           List words = result.data['words'];
-          print(words);
           return Center(
-              child: Text("hewwo")
+              child: Text("hello")
           );
         }
     );

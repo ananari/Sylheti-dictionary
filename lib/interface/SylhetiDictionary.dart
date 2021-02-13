@@ -36,7 +36,7 @@ class _SylhetiDictionaryState extends State<SylhetiDictionary> {
                 }
               ),
               Expanded(
-                  child: SearchResults()
+                  child: SearchResults(searchTerm: searchTerm)
               )
             ]
         )
