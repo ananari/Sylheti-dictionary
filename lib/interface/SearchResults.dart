@@ -1,45 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
-class SearchResults extends StatefulWidget {
+class SearchResults extends StatelessWidget {
 
   final String searchTerm;
-
   SearchResults({@required this.searchTerm});
-
-  @override
-  _SearchResultsState createState() => _SearchResultsState();
-}
-
-class _SearchResultsState extends State<SearchResults> {
-
-  String allWords = """
-  {
-  words {
-    ipa
-  }
-}""";
+  final String allWords =
+  """{
+    words {
+      ipa
+    }
+  }""";
 
   @override
   Widget build(BuildContext context) {
-    return Query(
-        options: QueryOptions(
-            document: gql(allWords)
-        ),
-        builder: (QueryResult result, { VoidCallback refetch, FetchMore fetchMore }) {
-          if (result.hasException) {
-            return Text(result.exception.toString());
-          }
+    if(true){
+      return Query(
+          options: QueryOptions(
+              document: gql(allWords)
+          ),
+          builder: (QueryResult result,
+              { VoidCallback refetch, FetchMore fetchMore }) {
+            if (result.hasException) {
+              return Text(result.exception.toString());
+            }
 
-          if (result.isLoading) {
-            return Text('Loading');
-          }
+            if (result.isLoading) {
+              return Text('Loading');
+            }
 
-          List words = result.data['words'];
-          return Center(
-              child: Text("hello")
-          );
-        }
-    );
+            List words = result.data['words'];
+            return Center(
+                child: Text("hello")
+            );
+          }
+      );
+    }
   }
 }
